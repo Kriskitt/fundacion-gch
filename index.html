@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Museo de Arte Moderno de Trujillo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <style>
+    :root {
+      /* para el degradado dinámico */
+      --pos: 50%;
+      --dist: 20%;
+      /* tamaño del tile de ruido */
+      --tile: 188px;
+    }
+    *, *::before, *::after {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    html, body {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      font-family: Abel Pro, sans-serif;
+    }
+    body {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      /* tracking gradiente mouse */
+      background: linear-gradient(
+        to top,
+        #F0CB81 calc(var(--dist) - var(--pos)),
+        #575654 var(--dist),
+        #B45535 calc(var(--dist) + var(--pos))
+      );
+      transition: background 5s ease;
+      filter: contrast(200%) brightness(1500%);
+    }
+    /* overlay de ruido inline dATA URL */
+    body::before {
+      content: "";
+      position: absolute;
+      top: 0; left: 0;
+      width: 100%;
+      height: 100%;
+      pointer-events: none;
+
+      /* SVG */
+      background-image: url("data:image/svg+xml,%3Csvg%20viewBox%3D'0%200%20178%20178'%20xmlns%3D'http://www.w3.org/2000/svg'%3E%3Cfilter%20id%3D'noiseFilter'%3E%3CfeTurbulence%20type%3D'fractalNoise'%20baseFrequency%3D'0.65'%20numOctaves%3D'3'%20stitchTiles%3D'stitch'/%3E%3C/filter%3E%3Crect%20width%3D'100%25'%20height%3D'100%25'%20filter%3D'url(%23noiseFilter)'/%3E%3C/svg%3E");
+      background-repeat: repeat;
+      background-size: var(--tile) var(--tile);
+
+
+      mix-blend-mode: multiply;
+      opacity: 0.18;
+      z-index: 1;
+    }
+    h1 {
+      position: relative;
+      z-index: 2;
+      font-family: 'New Spirit', serif;
+      font-weight: 100;
+      font-size: 1rem;
+      text-transform: uppercase;
+      letter-spacing: .1em;
+      color: white;
+    }
+    .socials {
+      position: absolute;
+      bottom: 3rem;
+      display: flex;
+      gap: 6rem;
+      z-index: 2;
+    }
+    .socials a {
+      color: white;
+      font-family: Abel Pro, sans-serif;
+      letter-spacing: 1.7rem;
+      text-decoration: none;
+      font-size: 1rem;
+      font-weight: 100;
+      transition: opacity .2s;
+    }
+    .socials a:hover { opacity: .7; }
+
+    .container1{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 4rem;
+    }
+    .main-header {
+      position: absolute;
+      top: 2rem;
+      left: 2rem;
+      z-index: 2;
+      font-family: Abel Pro, sans-serif;;
+      font-size: 0.88rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      line-height: 1.8rem;
+    }
+    .main-header a {
+      color: white;
+      text-decoration: none;
+      border-bottom: 1px solid white;
+      padding-bottom: 0.2rem;
+    }    
+
+    @media (max-width: 768px) {
+      .socials{
+        display: flex;
+        flex-direction: column;
+        align-items: center; 
+        gap: 2rem;
+      }
+      .socials a{
+        font-size: 0.75rem;
+        letter-spacing: 0.88rem;
+      }
+      .logo_mam{
+        width: 320px;
+      }
+      @media (max-width: 600px) {
+        .main-header {
+          font-size: 0.75rem;
+        }
+      }
+
+
+    }
+  </style>
+</head>
+<body>
+  <header class="main-header">
+    <a href="https://www.fundaciongerardochavez.org/" target="_blank">
+      Fundación <br>Gerardo Chávez</br>
+    </a>
+  </header>
+  <div class="container1">
+    <img src="./img/logo_mam.svg" class=logo_mam width="500" height="auto"/>
+    <h1>PRONTO</h1> 
+  </div>
+  <div class="socials">
+    <a href="https://www.facebook.com/museoartemodernotrujillo"   target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/mam_trux/"  target="_blank">Instagram</a>
+    <a href="https://wa.me/123456789"         target="_blank">WhatsApp</a>
+  </div>
+
+  <script>
+    const minTile = 188, maxTile = 228;
+    document.addEventListener('mousemove', e => {
+      // horizontal mov → degradado
+      const x = e.clientX / window.innerWidth;
+      document.documentElement.style.setProperty(
+        '--pos',
+        (x * 100).toFixed(1) + '%'
+      );
+      document.documentElement.style.setProperty(
+        '--dist',
+        (10 + Math.sin(x * Math.PI) * 5).toFixed(1) + '%'
+      );
+
+      // vertical mov → repeat tile SVG
+      const y = e.clientY / window.innerHeight;
+      const size = minTile + (maxTile - minTile) * y;
+      document.documentElement.style.setProperty(
+        '--tile',
+        size.toFixed(1) + 'px'
+      );
+    });
+  </script>
+</body>
+</html>
