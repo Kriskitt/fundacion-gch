@@ -2,8 +2,28 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Museo de Arte Moderno de Trujillo</title>
+  <title>Museo de Arte Moderno Trujillo</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- Open Graph fb, linkedin, etc -->
+  <meta property="og:title" content="Museo de Arte Moderno Trujillo">
+  <meta property="og:description" content="Inspirado en el legado de Gerardo Chávez y en la identidad visual del Norte Contemporáneo.">
+  <meta property="og:image" content="/img/preview.png">
+  <meta property="og:url" content="https://mamtrujillo.pe">
+  <meta property="og:type" content="website">
+  
+  <!-- twitter cards -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Museo de Arte Moderno Trujillo">
+  <meta name="twitter:description" content="Inspirado en el legado de Gerardo Chávez y en la identidad visual del Norte Contemporáneo.">
+  <meta name="twitter:image" content="img/preview.png">
+
+  <!-- favicon -->
+  <link rel="icon" href="/favicon/favicon.ico" type="image/x-icon">
+  <!-- png's -->
+  <link rel="icon" href="/favicon/favicon-32x32.png" sizes="32x32" type="image/png">
+  <link rel="icon" href="/favicon/favicon-16x16.png" sizes="16x16" type="image/png">
+  <!-- apple touch icon -->
+  <link rel="apple-touch-icon" href="/favicon/apple-touch-icon.png" sizes="180x180">     
   <style>
     :root {
       /* para el degradado dinámico */
@@ -17,6 +37,33 @@
       margin: 0;
       padding: 0;
     }
+    @font-face {
+      font-family: 'Abel Pro';
+      src: url('./fonts/abel-pro/Abel-Pro.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    
+    @font-face {
+      font-family: 'Abel Pro';
+      src: url('./fonts/abel-pro/Abel-Pro-Bold.otf') format('opentype');
+      font-weight: bold;
+      font-style: normal;
+    }
+    
+    @font-face {
+      font-family: 'New Spirit';
+      src: url('./fonts/New Spirit/fonnts.com-New-Spirit-.otf') format('opentype');
+      font-weight: normal;
+      font-style: normal;
+    }
+    
+    @font-face {
+      font-family: 'New Spirit';
+      src: url('./fonts/New Spirit/fonnts.com-New-Spirit-Bold.otf') format('opentype');
+      font-weight: bold;
+      font-style: normal;
+    }    
     html, body {
       width: 100%;
       height: 100%;
@@ -79,7 +126,8 @@
       font-family: Abel Pro, sans-serif;
       letter-spacing: 1.7rem;
       text-decoration: none;
-      font-size: 1rem;
+      text-transform: lowercase;
+      font-size: 0.88rem;
       font-weight: 100;
       transition: opacity .2s;
     }
@@ -94,7 +142,7 @@
     .main-header {
       position: absolute;
       top: 2rem;
-      left: 2rem;
+      right: 2rem;
       z-index: 2;
       font-family: Abel Pro, sans-serif;;
       font-size: 0.88rem;
@@ -128,8 +176,6 @@
           font-size: 0.75rem;
         }
       }
-
-
     }
   </style>
 </head>
@@ -146,13 +192,13 @@
   <div class="socials">
     <a href="https://www.facebook.com/museoartemodernotrujillo"   target="_blank">Facebook</a>
     <a href="https://www.instagram.com/mam_trux/"  target="_blank">Instagram</a>
-    <a href="https://wa.me/123456789"         target="_blank">WhatsApp</a>
+    <a href="https://wa.me/123456789"   target="_blank">WhatsApp</a>
   </div>
 
   <script>
     const minTile = 188, maxTile = 228;
     document.addEventListener('mousemove', e => {
-      // horizontal mov → degradado
+      // horizontal mov >> degradado
       const x = e.clientX / window.innerWidth;
       document.documentElement.style.setProperty(
         '--pos',
@@ -163,7 +209,7 @@
         (10 + Math.sin(x * Math.PI) * 5).toFixed(1) + '%'
       );
 
-      // vertical mov → repeat tile SVG
+      // vertical mov >> repeat tile SVG
       const y = e.clientY / window.innerHeight;
       const size = minTile + (maxTile - minTile) * y;
       document.documentElement.style.setProperty(
