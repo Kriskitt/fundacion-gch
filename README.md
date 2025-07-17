@@ -1,7 +1,7 @@
-# Museo de Arte Moderno de Trujillo
+# Fundación Gerardp Chávez
 
-Sitio web en desarrollo del Museo de Arte Moderno de Trujillo.  
+Sitio web en desarrollo de la Fundación Gerardo Chávez.
 Inspirado en el legado de Gerardo Chávez y en la identidad visual del Norte Contemporáneo.
 
 ### Enlace relacionado:
-[Fundación Gerardo Chávez](https://www.fundaciongerardochavez.org/)
+[Museo de Arte Moderno Trujillo](https://www.mamtrujillo.pe/)
